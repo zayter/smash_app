@@ -1,13 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:smash_fighters_reloaded/features/universes/data/datasources/universe_remote_datasource.dart';
-import 'package:smash_fighters_reloaded/features/universes/data/repositories/universe_repository_iml.dart';
 import 'package:smash_fighters_reloaded/features/universes/domain/entities/universe.dart';
+import 'package:get_it/get_it.dart';
 import 'package:smash_fighters_reloaded/features/universes/domain/usecases/universes_usecase.dart';
 
 final universeProvider = FutureProvider.autoDispose((ref) async {
-  var remoteDataSource = UniverseRemoteDataSourceImpl();
-  var repository = UniverseRepositoryImpl(remoteDataSource);
-  var usecase = UniversesUseCase(repository: repository);
+  var usecase = GetIt.I.get<UniversesUseCase>();
   final results = await usecase.getUniverses();
 
   return results.fold(

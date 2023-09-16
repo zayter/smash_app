@@ -1,6 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:smash_fighters_reloaded/features/fighters/data/datasources/fighter_remote_datasource.dart';
-import 'package:smash_fighters_reloaded/features/fighters/data/repositories/fighter_repository_impl.dart';
+import 'package:get_it/get_it.dart';
 import 'package:smash_fighters_reloaded/features/fighters/domain/entities/fighter.dart';
 import 'package:smash_fighters_reloaded/features/fighters/domain/entities/fighter_params.dart';
 import 'package:smash_fighters_reloaded/features/fighters/domain/usecases/fighters_usecase.dart';
@@ -11,9 +10,7 @@ import 'package:smash_fighters_reloaded/features/filters/domain/entities/filters
 final fighterProvider = FutureProvider.autoDispose((ref) async {
   final String universe = ref.read(currentFilteredUniverse);
   var params = FighterParams(universe: universe);
-  var remoteDataSource = FighterRemoteDataSourceImpl();
-  var repository = FighterRepositoryImpl(remoteDataSource);
-  var usecase = FightersUseCase(repository: repository);
+  var usecase = GetIt.I.get<FightersUseCase>();
   final results = await usecase.getFighters(params);
 
   return results.fold(
