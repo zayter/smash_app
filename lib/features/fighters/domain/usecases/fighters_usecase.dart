@@ -4,13 +4,6 @@ import 'package:smash_fighters_reloaded/features/fighters/domain/entities/fighte
 import 'package:smash_fighters_reloaded/features/fighters/domain/entities/fighter_params.dart';
 import 'package:smash_fighters_reloaded/features/fighters/domain/repositories/fighter_repository.dart';
 
-class FilmsParams {
-  final String path;
-  FilmsParams({
-    required this.path,
-  });
-}
-
 class FightersUseCase implements FighterRepository {
   final FighterRepository repository;
 

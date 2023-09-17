@@ -11,6 +11,7 @@ part of 'api.dart';
 class _Api implements Api {
   _Api(
     this._dio, {
+    // ignore: unused_element
     this.baseUrl,
   }) {
     baseUrl ??= 'https://593cdf8fb56f410011e7e7a9.mockapi.io';
@@ -25,6 +26,7 @@ class _Api implements Api {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{r'universe': universe};
     final _headers = <String, dynamic>{};
+    // ignore: prefer_const_declarations
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<List<dynamic>>(
         _setStreamType<HttpResponse<List<FighterModel>>>(Options(
@@ -55,6 +57,7 @@ class _Api implements Api {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
+    // ignore: prefer_const_declarations
     final Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<List<dynamic>>(
         _setStreamType<HttpResponse<List<UniverseModel>>>(Options(

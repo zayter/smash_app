@@ -1,9 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get_it/get_it.dart';
 import 'package:smash_fighters_reloaded/core/themes/app_theme.dart';
-import 'package:smash_fighters_reloaded/features/onboarding/domain/entities/onboarding_item.dart';
+import 'package:smash_fighters_reloaded/features/onboarding/data/datasources/onboarding_item_datasource.dart';
+import 'package:smash_fighters_reloaded/features/onboarding/domain/usecases/onboarding_usecase.dart';
 
 @RoutePage()
 class OnboardingPage extends ConsumerStatefulWidget {
@@ -81,10 +82,7 @@ class _OnboardingState extends ConsumerState<OnboardingPage> {
                           : "Next"),
                       onPressed: () async {
                         if (currentIndex == onboardingItems.length - 1) {
-                          final SharedPreferences prefs =
-                              await SharedPreferences.getInstance();
-                          prefs.setBool('onboardingFinished', true);
-                          // ignore: use_build_context_synchronously
+                          GetIt.I.get<OnboardingUseCase>().setOnboarded();
                           AutoRouter.of(ctx).replaceNamed('/');
                         }
                         _controller.nextPage(

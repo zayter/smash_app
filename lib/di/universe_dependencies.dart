@@ -1,6 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:smash_fighters_reloaded/features/universes/data/datasources/universe_remote_datasource.dart';
-import 'package:smash_fighters_reloaded/features/universes/data/repositories/universe_repository_iml.dart';
+import 'package:smash_fighters_reloaded/features/universes/data/repositories/universe_repository_impl.dart';
 import 'package:smash_fighters_reloaded/features/universes/domain/repositories/universe_repository.dart';
 import 'package:smash_fighters_reloaded/features/universes/domain/usecases/universes_usecase.dart';
 

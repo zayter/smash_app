@@ -1,18 +1,18 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get_it/get_it.dart';
 import 'package:smash_fighters_reloaded/features/fighters/presentation/pages/fighter_detail_page.dart';
 import 'package:smash_fighters_reloaded/features/fighters/presentation/pages/fighter_list_page.dart';
 import 'package:smash_fighters_reloaded/features/fighters/domain/entities/fighter.dart';
 import 'package:smash_fighters_reloaded/features/onboarding/presentation/pages/onboarding_page.dart';
+import 'package:smash_fighters_reloaded/features/onboarding/domain/usecases/onboarding_usecase.dart';
 
 part 'app_router.gr.dart';
 
 class OnboardingGuard extends AutoRouteGuard {
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    bool onboardedIn = pref.getBool('onboardingFinished') ?? false;
+    bool onboardedIn = await GetIt.I.get<OnboardingUseCase>().isOnboarded();
     if (onboardedIn) {
       resolver.next(true);
     } else {
