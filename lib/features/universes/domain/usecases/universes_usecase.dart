@@ -6,7 +6,7 @@ import 'package:smash_fighters_reloaded/features/universes/domain/repositories/u
 class UniversesUseCase implements UniverseRepository {
   final UniverseRepository repository;
 
-  UniversesUseCase({required this.repository});
+  UniversesUseCase(this.repository);
 
   @override
   Future<Either<Failure, List<Universe>>> getUniverses() async {

@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:get_it/get_it.dart';
 
 import 'package:smash_fighters_reloaded/core/api/failure.dart';
 import 'package:smash_fighters_reloaded/core/api/api.dart';
@@ -10,9 +9,9 @@ abstract class UniverseRemoteDataSource {
 }
 
 class UniverseRemoteDataSourceImpl implements UniverseRemoteDataSource {
-  final Api _api = GetIt.I.get<Api>();
+  final Api _api;
 
-  UniverseRemoteDataSourceImpl();
+  UniverseRemoteDataSourceImpl(this._api);
 
   @override
   Future<List<UniverseModel>> getUniverses() async {

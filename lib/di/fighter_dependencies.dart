@@ -6,10 +6,10 @@ import 'package:smash_fighters_reloaded/features/fighters/domain/usecases/fighte
 
 void fighterDependencies(GetIt sl) {
   sl.registerLazySingleton<FighterRemoteDataSource>(
-      () => FighterRemoteDataSourceImpl());
+      () => FighterRemoteDataSourceImpl(sl()));
 
   sl.registerLazySingleton<FighterRepository>(
       () => FighterRepositoryImpl(sl()));
 
-  sl.registerLazySingleton(() => FightersUseCase(repository: sl()));
+  sl.registerLazySingleton(() => FightersUseCase(sl()));
 }

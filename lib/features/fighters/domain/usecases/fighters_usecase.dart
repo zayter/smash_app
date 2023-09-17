@@ -14,7 +14,7 @@ class FilmsParams {
 class FightersUseCase implements FighterRepository {
   final FighterRepository repository;
 
-  FightersUseCase({required this.repository});
+  FightersUseCase(this.repository);
 
   @override
   Future<Either<Failure, List<Fighter>>> getFighters(

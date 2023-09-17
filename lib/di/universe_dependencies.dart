@@ -6,10 +6,10 @@ import 'package:smash_fighters_reloaded/features/universes/domain/usecases/unive
 
 void universeDependencies(GetIt sl) {
   sl.registerLazySingleton<UniverseRemoteDataSource>(
-      () => UniverseRemoteDataSourceImpl());
+      () => UniverseRemoteDataSourceImpl(sl()));
 
   sl.registerLazySingleton<UniverseRepository>(
       () => UniverseRepositoryImpl(sl()));
 
-  sl.registerLazySingleton(() => UniversesUseCase(repository: sl()));
+  sl.registerLazySingleton(() => UniversesUseCase(sl()));
 }

@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:get_it/get_it.dart';
 
 import 'package:smash_fighters_reloaded/core/api/failure.dart';
 import 'package:smash_fighters_reloaded/core/api/api.dart';
@@ -13,9 +12,9 @@ abstract class FighterRemoteDataSource {
 }
 
 class FighterRemoteDataSourceImpl implements FighterRemoteDataSource {
-  final Api _api = GetIt.I.get<Api>();
+  final Api _api;
 
-  FighterRemoteDataSourceImpl();
+  FighterRemoteDataSourceImpl(this._api);
 
   @override
   Future<List<FighterModel>> getFighters(FighterParams params) async {
