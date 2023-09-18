@@ -2,13 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:smash_fighters_reloaded/features/fighters/domain/entities/fighter.dart';
+import 'package:smash_fighters_reloaded/features/fighters/presentation/pages/fighter_list_page.dart';
 import 'package:smash_fighters_reloaded/features/fighters/presentation/providers/fighter_provider.dart';
-import 'package:smash_fighters_reloaded/features/fighters/presentation/widgets/fighter_grid.dart';
-import 'package:smash_fighters_reloaded/features/filters/presentation/providers/filter_provider.dart';
+import 'package:smash_fighters_reloaded/features/universes/domain/entities/universe.dart';
+import 'package:smash_fighters_reloaded/features/universes/presentation/providers/universe_provider.dart';
 
 void main() {
   testWidgets('Fighter should filtered by current Filters',
       (WidgetTester tester) async {
+    var universes = [
+      Universe(
+        objectID: '1',
+        name: 'Mario',
+        description: 'Mario',
+      ),
+    ];
+
     var fighters = [
       Fighter(
         objectID: '1',
@@ -32,34 +41,28 @@ void main() {
       )
     ];
 
-    final mockedFiltersProvider =
-        StateNotifierProvider<FiltersNotifier, Map<dynamic, dynamic>>(
-            (ref) => FiltersNotifier());
-
     var mockedProvider = FutureProvider.autoDispose((ref) {
       return ({fighters});
+    });
+
+    var mockedUniverse = FutureProvider.autoDispose((ref) {
+      return ({universes});
     });
 
     await tester.pumpWidget(
       ProviderScope(
         overrides: [
           fighterProvider.overrideWithProvider(mockedProvider),
+          universeProvider.overrideWithProvider(mockedUniverse)
         ],
         child: const MaterialApp(
-          home: Scaffold(
-            body: SafeArea(
-              child: Column(
-                children: [
-                  FighterGrid(),
-                ],
-              ),
-            ),
-          ),
+          title: 'Smash App',
+          debugShowCheckedModeBanner: false,
+          home: FighterListPage(),
         ),
       ),
     );
 
-    expect(find.text('Luigi'), findsNothing);
-    expect(find.text('Mario'), findsOneWidget);
+    expect(find.text('Fighters(1)'), findsOneWidget);
   });
 }
