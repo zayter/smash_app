@@ -18,7 +18,7 @@ class FighterListPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final universes = ref.watch(universeProvider);
-    final Map currentFilters = ref.watch(getCurrentFilters);
+    final Map currentFilters = ref.watch(filterProvider);
 
     return universes.when(
       skipLoadingOnRefresh: false,
@@ -30,7 +30,8 @@ class FighterListPage extends ConsumerWidget {
       ),
       error: (err, stack) => Text('Error: $err'),
       data: (universes) {
-        final List<Universe> sortedUniverses = ref.read(getSortedUniverses);
+        final List<Universe> sortedUniverses =
+            ref.read(sortedUniversesProvider);
         return Scaffold(
           appBar: AppBar(
             title: const Text('Fighters'),

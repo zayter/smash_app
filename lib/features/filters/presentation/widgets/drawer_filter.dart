@@ -14,7 +14,7 @@ class DrawerFilter extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    Map currentFilters = ref.watch(getCurrentFilters);
+    Map currentFilters = ref.watch(filterProvider);
 
     SortBy? sortedByValue = currentFilters['sortBy'];
     RangeValues? priceFilterValue = currentFilters['price'];
@@ -128,7 +128,7 @@ class DrawerFilter extends ConsumerWidget {
                   margin: const EdgeInsets.all(20),
                   child: ElevatedButton(
                     onPressed: () {
-                      ref.read(getCurrentFilters.notifier).setFilters({
+                      ref.read(filterProvider.notifier).setFilters({
                         'price': priceFilterValue,
                         'rate': rateFilterValue,
                         'sortBy': sortedByValue,

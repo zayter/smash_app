@@ -107,7 +107,7 @@ void main() {
               overrides: [
                 fighterProvider.overrideWithProvider(mockedFighterProvider),
                 universeProvider.overrideWithProvider(mockedUniverseProvider),
-                getCurrentFilters.overrideWithProvider(mockedFilterProvider),
+                filterProvider.overrideWithProvider(mockedFilterProvider),
               ],
               child: const MaterialApp(
                 title: 'Smash App',
@@ -142,7 +142,7 @@ void main() {
               overrides: [
                 fighterProvider.overrideWithProvider(mockedFighterProvider),
                 universeProvider.overrideWithProvider(mockedUniverseProvider),
-                getCurrentFilters.overrideWithProvider(mockedFilterProvider),
+                filterProvider.overrideWithProvider(mockedFilterProvider),
               ],
               child: const MaterialApp(
                 title: 'Smash App',
@@ -177,7 +177,7 @@ void main() {
               overrides: [
                 fighterProvider.overrideWithProvider(mockedFighterProvider),
                 universeProvider.overrideWithProvider(mockedUniverseProvider),
-                getCurrentFilters.overrideWithProvider(mockedFilterProvider),
+                filterProvider.overrideWithProvider(mockedFilterProvider),
               ],
               child: const MaterialApp(
                 title: 'Smash App',

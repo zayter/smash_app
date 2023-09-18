@@ -13,7 +13,7 @@ final universeProvider = FutureProvider.autoDispose((ref) async {
   );
 });
 
-final Provider<List<Universe>> getSortedUniverses = Provider((ref) {
+final Provider<List<Universe>> sortedUniversesProvider = Provider((ref) {
   final List<Universe> sortedUniverses =
       ref.read(universeProvider).value!.first;
 
@@ -37,7 +37,7 @@ class UniverseFilterNotifier extends StateNotifier<String> {
   }
 }
 
-final currentFilteredUniverse =
+final currentUniverseProvider =
     StateNotifierProvider<UniverseFilterNotifier, String>((ref) {
   return UniverseFilterNotifier();
 });

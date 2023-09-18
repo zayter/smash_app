@@ -13,7 +13,7 @@ class SortByFilter extends ConsumerStatefulWidget {
 }
 
 class _SortByFilterState extends ConsumerState<SortByFilter> {
-  late SortBy? _currentSortedValue = ref.watch(getCurrentFilters)['sortBy'];
+  late SortBy? _currentSortedValue = ref.watch(filterProvider)['sortBy'];
 
   @override
   Widget build(BuildContext context) {

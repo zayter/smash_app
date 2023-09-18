@@ -13,7 +13,7 @@ class RatingFilter extends ConsumerStatefulWidget {
 }
 
 class _RatingFilterState extends ConsumerState<RatingFilter> {
-  late final double _currentRateValue = ref.watch(getCurrentFilters)['rate'];
+  late final double _currentRateValue = ref.watch(filterProvider)['rate'];
 
   @override
   Widget build(BuildContext context) {

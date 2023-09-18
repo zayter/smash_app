@@ -13,8 +13,7 @@ class SortByDirFilter extends ConsumerStatefulWidget {
 }
 
 class _SortByDirFilterState extends ConsumerState<SortByDirFilter> {
-  late SortByDir? _currentSortedValue =
-      ref.watch(getCurrentFilters)['sortByDir'];
+  late SortByDir? _currentSortedValue = ref.watch(filterProvider)['sortByDir'];
 
   @override
   Widget build(BuildContext context) {

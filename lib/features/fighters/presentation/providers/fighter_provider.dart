@@ -8,7 +8,7 @@ import 'package:smash_fighters_reloaded/features/universes/presentation/provider
 import 'package:smash_fighters_reloaded/features/filters/domain/entities/filters.dart';
 
 final fighterProvider = FutureProvider.autoDispose((ref) async {
-  final String universe = ref.read(currentFilteredUniverse);
+  final String universe = ref.read(currentUniverseProvider);
   var params = FighterParams(universe: universe);
   var usecase = GetIt.I.get<FightersUseCase>();
   final results = await usecase.getFighters(params);
@@ -19,9 +19,9 @@ final fighterProvider = FutureProvider.autoDispose((ref) async {
   );
 });
 
-final getFilteredAndSortedFighters =
+final filteredFighterProvider =
     Provider.autoDispose.family((ref, List<Fighter> fighters) {
-  final Map filters = ref.watch(getCurrentFilters);
+  final Map filters = ref.watch(filterProvider);
   final double minPrice = filters['price'].start;
   final double maxPrice = filters['price'].end;
   final double currentRate = filters['rate'];

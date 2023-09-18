@@ -13,7 +13,7 @@ class PriceFilter extends ConsumerStatefulWidget {
 }
 
 class _RangeSliderPriceState extends ConsumerState<PriceFilter> {
-  late RangeValues _currentRangeValues = ref.watch(getCurrentFilters)['price'];
+  late RangeValues _currentRangeValues = ref.watch(filterProvider)['price'];
 
   @override
   Widget build(BuildContext context) {

@@ -53,7 +53,7 @@ class _TabMenuState extends ConsumerState<TabMenu> {
                         final String universeQueryID =
                             widget.universes[index].name;
                         ref
-                            .read(currentFilteredUniverse.notifier)
+                            .read(currentUniverseProvider.notifier)
                             .updateSelectedUniverse(universeQueryID == 'All'
                                 ? ''
                                 : universeQueryID);

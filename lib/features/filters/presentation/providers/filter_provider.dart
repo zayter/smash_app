@@ -9,7 +9,7 @@ class FiltersNotifier extends StateNotifier<Map<dynamic, dynamic>> {
   }
 }
 
-final getCurrentFilters =
+final filterProvider =
     StateNotifierProvider<FiltersNotifier, Map<dynamic, dynamic>>(
   (ref) => FiltersNotifier(),
 );

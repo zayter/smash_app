@@ -14,7 +14,7 @@ class FighterGrid extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final fighters = ref.watch(fighterProvider);
-    final Map currentFilters = ref.watch(getCurrentFilters);
+    final Map currentFilters = ref.watch(filterProvider);
 
     return fighters.when(
       skipLoadingOnRefresh: false,
@@ -24,13 +24,13 @@ class FighterGrid extends ConsumerWidget {
       error: (err, stack) => Text('Error: $err'),
       data: (fighters) {
         final filteredFighters =
-            ref.watch(getFilteredAndSortedFighters(fighters.first));
+            ref.watch(filteredFighterProvider(fighters.first));
 
         return RefreshIndicator(
           onRefresh: () async {
-            ref.invalidate(currentFilteredUniverse);
+            ref.invalidate(currentUniverseProvider);
             ref.invalidate(universeProvider);
-            ref.invalidate(getCurrentFilters);
+            ref.invalidate(filterProvider);
           },
           child: Column(
             children: [
