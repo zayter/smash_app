@@ -65,7 +65,9 @@ class FighterListPage extends ConsumerWidget {
                   TabMenu(
                     universes: sortedUniverses,
                   ),
-                  const FighterGrid(),
+                  const Expanded(
+                    child: FighterGrid(),
+                  ),
                 ],
               ),
             ),

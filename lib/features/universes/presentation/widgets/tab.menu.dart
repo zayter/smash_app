@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:smash_fighters_reloaded/features/fighters/presentation/providers/fighter_provider.dart';
-import 'package:smash_fighters_reloaded/features/filters/presentation/providers/filter_provider.dart';
 import 'package:smash_fighters_reloaded/features/universes/domain/entities/universe.dart';
 import 'package:smash_fighters_reloaded/features/universes/presentation/providers/universe_provider.dart';
 
@@ -59,7 +58,6 @@ class _TabMenuState extends ConsumerState<TabMenu> {
                                 ? ''
                                 : universeQueryID);
                         ref.invalidate(fighterProvider);
-                        ref.invalidate(getCurrentFilters);
                         setState(() {
                           currentIndex = index;
                         });
