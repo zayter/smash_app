@@ -1,4 +1,4 @@
-package com.example.smash_fighters_reloaded
+package com.zayter.smashFightersReloaded
 
 import io.flutter.embedding.android.FlutterActivity
 
